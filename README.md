@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Getting Started
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is using this design: [https://dribbble.com/shots/21678041-NewsHub-News-Website](https://dribbble.com/shots/21678041-NewsHub-News-Website)
 
 ## Available Scripts
 
