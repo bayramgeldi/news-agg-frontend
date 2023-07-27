@@ -31,7 +31,6 @@ const Navbar = (props) => {
                 <Link to={"/"} className="navbar-brand">
                     {process.env.REACT_APP_NAME}
                 </Link>
-                {props.currentUser && (
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0 mx-4">
                         {categories && categories.map((category, index) => (
                             <li key={category.id} className="nav-item mx-2">
@@ -41,7 +40,6 @@ const Navbar = (props) => {
                             </li>
                         ))}
                     </ul>
-                )}
 
                 {props.currentUser ? (
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0 d-flex">

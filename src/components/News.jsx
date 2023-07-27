@@ -2,6 +2,7 @@ import {Link, useLocation, useParams} from "react-router-dom";
 import {NewsCard} from "./NewsCard";
 import React, {useEffect} from "react";
 import UserService from "../services/user.service";
+import NewsService from "../services/news.service";
 
 export const News = () => {
     const [news, setNews] = React.useState([]);
@@ -10,19 +11,34 @@ export const News = () => {
     let params = useParams();
     console.log(params);
     useEffect(() => {
-        UserService.getNews().then(
-            (response) => {
-                setNews(response.data.news);
-                setCount(response.data.totalResults);
-            },
-            (error) => {
-                const _content =
-                    (error.response && error.response.data) ||
-                    error.message ||
-                    error.toString();
-            }
-        );
-    }, []);
+        if (params.category) {
+            NewsService.getNewsByCategory(params.category).then(
+                (response) => {
+                    setNews(response.data.news);
+                    setCount(response.data.totalResults);
+                },
+                (error) => {
+                    const _content =
+                        (error.response && error.response.data) ||
+                        error.message ||
+                        error.toString();
+                }
+            );
+        }else {
+            UserService.getNews().then(
+                (response) => {
+                    setNews(response.data.news);
+                    setCount(response.data.totalResults);
+                },
+                (error) => {
+                    const _content =
+                        (error.response && error.response.data) ||
+                        error.message ||
+                        error.toString();
+                }
+            );
+        }
+    }, [params]);
     return (
         <div className={"row mt-5"}>
             <div className="d-flex justify-content-between mt-5">
