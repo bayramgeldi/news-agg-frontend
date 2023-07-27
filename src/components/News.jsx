@@ -1,4 +1,4 @@
-import {Link, useLocation, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {NewsCard} from "./NewsCard";
 import React, {useEffect} from "react";
 import UserService from "../services/user.service";
