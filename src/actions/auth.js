@@ -1,16 +1,10 @@
-import {
-    REGISTER_SUCCESS,
-    REGISTER_FAIL,
-    LOGIN_SUCCESS,
-    LOGIN_FAIL,
-    LOGOUT,
-    SET_MESSAGE,
-} from "./types";
+import {LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT, REGISTER_FAIL, REGISTER_SUCCESS, SET_MESSAGE,} from "./types";
 
 import AuthService from "../services/auth.service";
+import UserService from "../services/user.service";
 
-export const register = (username, email, password) => (dispatch) => {
-    return AuthService.register(username, email, password).then(
+export const register = (name, email, password) => (dispatch) => {
+    return AuthService.register(name, email, password).then(
         (response) => {
             dispatch({
                 type: REGISTER_SUCCESS,
@@ -50,7 +44,7 @@ export const login = (email, password) => (dispatch) => {
         (data) => {
             dispatch({
                 type: LOGIN_SUCCESS,
-                payload: { user: data },
+                payload: {user: data},
             });
 
             return Promise.resolve();
@@ -84,3 +78,31 @@ export const logout = () => (dispatch) => {
         type: LOGOUT,
     });
 };
+
+export const saveSettings = (sources, categories, authors) => (dispatch) => {
+    return UserService.saveSettings(sources, categories, authors).then(
+        (data) => {
+            dispatch({
+                type: SET_MESSAGE,
+                payload: data.message,
+            });
+
+            return Promise.resolve();
+        },
+        (error) => {
+            const message =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                error.message ||
+                error.toString();
+
+            dispatch({
+                type: SET_MESSAGE,
+                payload: message,
+            });
+
+            return Promise.reject();
+        }
+    );
+}

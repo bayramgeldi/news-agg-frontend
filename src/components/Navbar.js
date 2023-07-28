@@ -31,15 +31,15 @@ const Navbar = (props) => {
                 <Link to={"/"} className="navbar-brand">
                     {process.env.REACT_APP_NAME}
                 </Link>
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0 mx-4">
-                        {categories && categories.map((category, index) => (
-                            <li key={category.id} className="nav-item mx-2">
-                                <Link to={"/categories/"+category.name} className="nav-link">
-                                    {category.title}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
+                <ul className="navbar-nav me-auto mb-2 mb-lg-0 mx-4">
+                    {categories.map((category, index) => (
+                        <li key={category.id} className="nav-item mx-2">
+                            <Link to={"/categories/" + category.name} className="nav-link">
+                                {category.title}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
 
                 {props.currentUser ? (
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0 d-flex">

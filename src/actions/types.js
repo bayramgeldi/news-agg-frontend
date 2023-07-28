@@ -3,9 +3,16 @@ export const REGISTER_FAIL = "REGISTER_FAIL";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT = "LOGOUT";
+
+export const SAVE_SETTINGS = "SAVE_SETTINGS";
+
+export const GET_AUTHORS = "GET_AUTHORS";
+export const GET_SOURCES = "GET_SOURCES";
 export const GET_CATEGORIES = "GET_CATEGORIES";
 
 export const GET_NEWS_BY_CATEGORIES = "GET_NEWS_BY_CATEGORIES";
 
 export const SET_MESSAGE = "SET_MESSAGE";
 export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
+
+

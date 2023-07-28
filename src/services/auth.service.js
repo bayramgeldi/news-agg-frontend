@@ -1,11 +1,12 @@
 import axios from "axios";
 
 const API_URL = process.env.REACT_APP_API_URL;
-const register = (username, email, password) => {
+const register = (name, email, password) => {
     return axios.post(API_URL + "/register", {
-        username,
+        name,
         email,
         password,
+        password_confirmation: password,
     });
 };
 
@@ -14,7 +15,7 @@ const login = (email, password) => {
         .post(API_URL + "/login", {
             email: email,
             password,
-            token_name:process.env.REACT_APP_NAME
+            token_name: process.env.REACT_APP_NAME
         })
         .then((response) => {
             if (response.data.data.token) {
@@ -24,6 +25,7 @@ const login = (email, password) => {
             return response.data;
         });
 };
+
 
 const logout = () => {
     localStorage.removeItem("user");

@@ -1,19 +1,13 @@
-import {
-    REGISTER_SUCCESS,
-    REGISTER_FAIL,
-    LOGIN_SUCCESS,
-    LOGIN_FAIL,
-    LOGOUT,
-} from "../actions/types";
+import {LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT, REGISTER_FAIL, REGISTER_SUCCESS, SAVE_SETTINGS,} from "../actions/types";
 
 const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = user
-    ? { isLoggedIn: true, user }
-    : { isLoggedIn: false, user: null };
+    ? {isLoggedIn: true, user}
+    : {isLoggedIn: false, user: null};
 
 export default function (state = initialState, action) {
-    const { type, payload } = action;
+    const {type, payload} = action;
 
     switch (type) {
         case REGISTER_SUCCESS:
@@ -25,6 +19,10 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 isLoggedIn: false,
+            };
+        case SAVE_SETTINGS:
+            return {
+                ...state
             };
         case LOGIN_SUCCESS:
             return {
